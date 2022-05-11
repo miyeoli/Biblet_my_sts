@@ -38,6 +38,7 @@
 	 <div class="col-25 col-md-20 col-lg-2 col-xl-2">
 		<div class="navbar-collapse collapse show" id="navbarColor01"
 			 style="float:right;">
+			 <c:if test="${empty myID}">
 			 <ul class="navbar-nav me-auto">
 				<li class="nav-item"><a class="nav-link" onClick="location.href = '/member/signup'">Signup</a></li>
 			</ul>
@@ -45,24 +46,26 @@
 				<li class="nav-item"><a class="nav-link" onClick="location.href = '/member/login'">Login</a></li>
 			</ul>
 			<ul class="navbar-nav me-auto">
-				<li class="nav-item"><a class="nav-link" onClick="location.href = '/member/logout'">Logout</a></li>
-			</ul>
-			<ul class="navbar-nav me-auto">
 				<li class="nav-item"><a class="nav-link" onClick="location.href = '/member/findId'">ForgotID</a></li>
 			</ul>
 			<ul class="navbar-nav me-auto">
 				<li class="nav-item"><a class="nav-link" onClick="location.href = '/admin/signup'">AdminSignup</a></li>
 			</ul>
-			<c:if test="${empty myID}">
 			<ul class="navbar-nav me-auto">
 				<li class="nav-item"><a class="nav-link" onClick="location.href = '/admin/login'">AdminLogin</a></li>
 			</ul>
 			</c:if>
+			<c:if test="${!empty myID}">
+			<ul class="navbar-nav me-auto">
+				<li class="nav-item"><a class="nav-link" onClick="location.href = '/member/logout'">Logout</a></li>
+			</ul>
 			<ul class="navbar-nav me-auto">
 				<li class="nav-item"><a class="nav-link" onClick="location.href = '/MyPage'">MyPage</a></li>
 			</ul>
+			</c:if>
 		</div>
 	</div>
+	
   </div>	
 </nav>		
 		<header class="masthead" style="background-image: url('/resources/image/home-bg.jpg')">
@@ -251,7 +254,7 @@
 			    })
 			    .done(function (msg) {	//검색 결과 담기 / [응답]
 			    	console.log(msg);
-			        $("#popularList").append("<img src='" + msg.documents[0].thumbnail + "'/>");	//표지
+			        $("#popularList").append("<img src='" + msg.documents[0].thumbnail + "'/>  ");	//표지
 			    });   
 			}
 			

@@ -3,6 +3,9 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="java.net.URLEncoder"%>
+<%@ page import="java.security.SecureRandom"%>
+<%@ page import="java.math.BigInteger"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +17,11 @@
 </script>
 
 <title><spring:message code="login.title" /></title>
+<script type="text/javascript"
+	src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js"
+	charset="utf-8"></script>
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/resources/css/adminbootstrap.min.css">
 <link rel="stylesheet"
@@ -59,6 +67,44 @@
 							</button>
 						</div>
 					</form:form>
+					
+					<div class="division">
+
+						<div class="row">
+							<div class="col-3">
+								<div class="line l"></div>
+							</div>
+							<div class="col-6">
+								<span>간편 로그인</span>
+							</div>
+							<div class="col-3">
+								<div class="line r"></div>
+							</div>
+						</div>
+					</div>
+	
+	<!-- 네이버 로그인 버튼 노출 영역 -->
+		<%
+		String clientId = "d49IDn_y2lOLJI_iR5pL";//애플리케이션 클라이언트 아이디값";
+		String redirectURI = URLEncoder.encode("http://localhost:8080/www/home", "UTF-8");
+		SecureRandom random = new SecureRandom();
+		String state = new BigInteger(130, random).toString();
+		String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
+		apiURL += "&client_id=" + clientId;
+		apiURL += "&redirect_uri=" + redirectURI;
+		apiURL += "&state=" + state;
+		session.setAttribute("state", state);
+		%>
+		
+	<div class="row mx-auto ">
+		<div class="col-4">
+			<a href="<%=apiURL%>"><img height="50"
+			src="http://static.nid.naver.com/oauth/small_g_in.PNG" />
+			
+			</a>
+		</div>
+	</div>
+					
 				</div>
 			</div>
 		</div>

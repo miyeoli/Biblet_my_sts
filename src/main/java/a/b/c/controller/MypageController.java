@@ -56,8 +56,13 @@ public class MypageController {
 			session.getAttribute("authInfo");
 		}
 
+		
+		
 		authInfo = (MemberVO) session.getAttribute("authInfo");
 
+		if(authInfo==null) {
+			return "redirect:/";
+		}
 		/**
 		 * Long mem_num으로 변환
 		 */
@@ -72,6 +77,8 @@ public class MypageController {
 
 		model.addAttribute("myInfo", member);
 
+		
+		
 		return "user/Mypage";
 	}
 

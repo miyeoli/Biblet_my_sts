@@ -23,7 +23,7 @@
 					<div class="form-group">
 						<p>
 							<label>ID 검색을 위한 이메일 입력 : </label>
-							<input type="text" id="mem_email" name="mem_email">
+							<input type="text"  class="form-control" id="mem_email" name="mem_email">
 						</p>
  					</div>
  	

@@ -36,7 +36,7 @@
 						<c:if test="${!empty myInfo}"></c:if>
 						<div>
 							<p>
-								<input type="file" name="file" id="file">
+								<input type="file" name="file" id="file" required>
 							</p>
 						</div>
 

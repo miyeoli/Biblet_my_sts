@@ -53,6 +53,25 @@
 								내 찜 수 : <strong>${MyLikeCount}</strong>
 							</p>
 						</div>
+						
+						<div class="container">
+							<div class="row">
+								<div class="col">
+									<div class="col-20">
+										<div class="card text-white bg-secondary mb-3"
+											style="max-width: 100rem;">
+											<div class="card-header">
+												<c:if test="${!empty MyLikeCount}">
+							
+												<div id="like"></div>
+													
+												</c:if>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 
 						<div class="row">
 							<h3 style="margin-top: 20px;" class="text-secondary">
@@ -61,6 +80,25 @@
 							<p class="text-muted">
 								내 보는 중 수 : <strong>${MyLeadingCount}</strong>
 							</p>
+						</div>
+
+						<div class="container">
+							<div class="row">
+								<div class="col">
+									<div class="col-20">
+										<div class="card text-white bg-secondary mb-3"
+											style="max-width: 100rem;">
+											<div class="card-header">
+												<c:if test="${!empty MyLeadingCount}">
+							
+												<div id="leading"></div>
+													
+												</c:if>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
 
 						<div class="row">
@@ -136,7 +174,7 @@
 								console.log(msg);
 								$("#like")
 										.append(
-												"<img src='" + msg.documents[0].thumbnail + "'/>"); //표지
+												"<img src='" + msg.documents[0].thumbnail + "'/>&nbsp&nbsp"); //표지
 							});
 		}
 
@@ -168,7 +206,7 @@
 								console.log(msg);
 								$("#leading")
 										.append(
-												"<img src='" + msg.documents[0].thumbnail + "'/>"); //표지
+												"<img src='" + msg.documents[0].thumbnail + "'/>&nbsp&nbsp"); //표지
 							});
 		}
 
